@@ -42,6 +42,11 @@ public class OtherClassLoaderClassPathRoot implements ClassPathRoot {
   }
 
   @Override
+  public String getAbsoluteClassPath(String name) throws IOException {
+    return null;
+  }
+
+  @Override
   public URL getResource(final String name) throws MalformedURLException {
     return this.loader.getResource(name);
   }

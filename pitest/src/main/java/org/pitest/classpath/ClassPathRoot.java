@@ -28,6 +28,8 @@ public interface ClassPathRoot {
 
   InputStream getData(String name) throws IOException;
 
+  String getAbsoluteClassPath(String name) throws IOException;
+
   Collection<String> classNames();
 
   Optional<String> cacheLocation();

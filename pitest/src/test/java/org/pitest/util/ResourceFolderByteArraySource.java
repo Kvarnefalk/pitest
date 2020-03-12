@@ -41,6 +41,11 @@ class ResourceFolderClassPathroot implements ClassPathRoot {
   }
 
   @Override
+  public String getAbsoluteClassPath(String name) throws IOException {
+    return null;
+  }
+
+  @Override
   public Collection<String> classNames() {
     return null;
   }

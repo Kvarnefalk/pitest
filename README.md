@@ -6,6 +6,16 @@ Pitest (aka PIT) is a state of the art mutation testing system for Java and the 
 
 Read all about it at http://pitest.org
 
+# PITest - Robolectric
+Since this is a custom hack, only to be working with robolectric, we create a fix that wont work for other testing frameworks. Therefor some of the tests are not passing related to that. Compile it with
+
+`
+mvn install -Dmaven.test.skip=true
+`
+
+and proceed with caution.
+
+
 ## Releases
 
 ### 1.5.0

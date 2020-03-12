@@ -47,6 +47,18 @@ public class DirectoryClassPathRoot implements ClassPathRoot, IOHeavyRoot {
   }
 
   @Override
+  public String getAbsoluteClassPath(final String classname) throws IOException {
+    final String filename = classname.replace('.', File.separatorChar).concat(
+            ".class");
+    final File file = new File(this.root, filename);
+    if (file.canRead()) {
+      return file.getAbsolutePath();
+    } else {
+      return null;
+    }
+  }
+
+  @Override
   public URL getResource(final String name) throws MalformedURLException {
     final File f = new File(this.root, name);
     if (f.canRead()) {

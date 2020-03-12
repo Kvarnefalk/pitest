@@ -32,6 +32,15 @@ public class NameCachingRoot implements ClassPathRoot {
   }
 
   @Override
+  public String getAbsoluteClassPath(String name) throws IOException {
+    final Collection<String> names = classNames();
+    if (!names.contains(ClassName.fromString(name).asJavaName())) {
+      return null;
+    }
+    return this.child.getAbsoluteClassPath(name);
+  }
+
+  @Override
   public InputStream getData(String name) throws IOException {
     final Collection<String> names = classNames();
     if (!names.contains(ClassName.fromString(name).asJavaName())) {

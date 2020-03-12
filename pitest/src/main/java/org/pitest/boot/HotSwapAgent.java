@@ -14,6 +14,9 @@
  */
 package org.pitest.boot;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.lang.instrument.ClassDefinition;
 import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.Instrumentation;
@@ -25,7 +28,6 @@ public class HotSwapAgent {
 
   public static void premain(final String agentArguments, // NO_UCD
       final Instrumentation inst) {
-    System.out.println("Installing PIT agent");
     instrumentation = inst;
   }
 
@@ -56,6 +58,16 @@ public class HotSwapAgent {
       // swallow
     }
     return false;
+  }
+
+  public static void writeMutationToDisc(byte[] bytes, String clazzFilePath) {
+    try (FileOutputStream fos = new FileOutputStream(clazzFilePath)) {
+      fos.write(bytes);
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
 }

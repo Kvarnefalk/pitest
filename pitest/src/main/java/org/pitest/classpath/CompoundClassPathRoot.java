@@ -33,6 +33,16 @@ public class CompoundClassPathRoot implements ClassPathRoot,
     return null;
   }
 
+  public String getAbsoluteClassPath(final String name) throws IOException {
+    for (final ClassPathRoot each : this.roots) {
+      final String absoluteClassPath = each.getAbsoluteClassPath(name);
+      if (absoluteClassPath != null) {
+        return absoluteClassPath;
+      }
+    }
+    return null;
+  }
+
   @Override
   public Collection<String> classNames() {
     final List<String> arrayList = new ArrayList<>();

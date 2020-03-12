@@ -105,6 +105,10 @@ public class ClassPath {
     }
   }
 
+  public String getAbsoluteClassPath(final String name) throws IOException {
+      return this.root.getAbsoluteClassPath(name);
+  }
+
   public URL findResource(final String name) {
     try {
       return this.root.getResource(name);
